@@ -27,6 +27,10 @@ void FuncDefAST::dump() const {
         cout << " }";
     }
     else if(mode == "-koopa") {
+        if(name != "main") {
+            std::cerr << "Error: only main function is supported\n";
+            exit(1);
+        }
         std::cout << "fun @" << name << "(): ";
         type->dump();
         std::cout << " {\n";

@@ -5,6 +5,7 @@
 #include <memory>
 #include <cstring>
 #include "include/ast.hpp"
+#include "include/visit.hpp"
 #include "koopa.h"
 using namespace std;
 
@@ -27,8 +28,8 @@ void do_riscv() {
     // 释放 Koopa IR 程序占用的内存
     koopa_delete_program(program);
 
-    // 处理 raw program
-    // ...
+    // 处理raw
+    Visit(raw);
 
     // 处理完成, 释放 raw program builder 占用的内存
     // 注意, raw program 中所有的指针指向的内存均为 raw program builder 的内存
@@ -54,8 +55,6 @@ int main(int argc, char *argv[]) {
     str = new char[5000];
     freopen(output, "w", stdout);
     ast->dump();
-
-    // printf("!\n");
 
     if(mode == "-riscv") do_riscv();
     fclose(stdout);
