@@ -1,4 +1,5 @@
 #include "ast.hpp"
+#include "koopa.h"
 #include <iostream>
 using namespace std;
 string mode;
