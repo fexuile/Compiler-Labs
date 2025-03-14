@@ -58,6 +58,6 @@ int main(int argc, char *argv[]) {
 
     if(mode == "-riscv") do_riscv();
     fclose(stdout);
-
+    
     return 0;
 }

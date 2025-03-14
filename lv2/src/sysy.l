@@ -11,7 +11,7 @@ using namespace std;
 
 Whitespace [ \n\t\r]*
 Linecomment "//".*
-Blockcomment \/\*([^*"]*|".*"|\*+[^/])*\*\/
+Blockcomment \/\*[^*]*\*+([^/*][^*]*\*+)*\/
 Indentifier [a-zA-Z_][a-zA-Z0-9_]*
 Decimal [1-9][0-9]*
 Octal 0[0-7]*

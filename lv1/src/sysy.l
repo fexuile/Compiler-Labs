@@ -9,9 +9,9 @@
 using namespace std;
 %}
 
-Whitespace [ \n\t\r]*
-Linecomment "//".*
-Blockcomment \/\*([^*"]*|".*"|\*+[^/])*\*\/
+WhiteSpace    [ \t\n\r]*
+LineComment   "//".*
+BlockComment \/\*[^*]*\*+([^/*][^*]*\*+)*\/
 Indentifier [a-zA-Z_][a-zA-Z0-9_]*
 Decimal [1-9][0-9]*
 Octal 0[0-7]*
@@ -19,9 +19,9 @@ Hexadecimal   0[xX][0-9a-fA-F]+
 
 %%
 
-{Whitespace} {}
-{Linecomment} {}
-{Blockcomment} {}
+{WhiteSpace} {}
+{LineComment} {}
+{BlockComment} {}
 "int" {return INT; }
 "return" {return RETURN; }
 {Indentifier} {yylval.str_val = new string(yytext); return IDENT; }

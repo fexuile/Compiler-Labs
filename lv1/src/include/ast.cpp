@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 string mode;
+int ID = 0;
 
 void CompUnitAST::dump() const{
     if(mode == "-ast") {
@@ -24,6 +25,10 @@ void FuncDefAST::dump() const {
         cout << " }";
     }
     else {
+        if (name != "main"){
+            std::cerr << "error: function name != main\n";
+            exit(1);
+        }
         std::cout << "fun @" << name << "(): ";
         type->dump();
         std::cout << " {\n";
@@ -44,11 +49,11 @@ void FuncTypeAST::dump() const {
 void BlockAST::dump() const {
     if(mode == "-ast") {
         std::cout << "BlockAST { ";
-        stmt->dump();
+        stmt->dump(); 
         std::cout << " }";
     }
     else {
-        cout << "%entry:\n";
+        cout << "\%" << ID++ << ":\n";
         stmt->dump();
     }
 }
